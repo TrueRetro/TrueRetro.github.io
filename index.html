@@ -6,57 +6,84 @@
     <title>TrueRetro Header Test</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffffff; /* Pure white background */
+            background-color: #ffffff; /* White test background */
             font-family: 'Google Sans', sans-serif;
             display: flex;
             justify-content: center;
-            padding-top: 80px; /* Offset from top as seen in screenshot */
+            padding-top: 100px;
         }
 
         header {
-            background-color: #050a14; /* Deep navy-black */
-            width: 90%;
-            max-width: 1100px;
-            height: 64px;
+            /* The glossy gradient from your first screenshot */
+            background: linear-gradient(180deg, #2a2a2a 0%, #111111 50%, #000000 100%);
+            width: 95%;
+            max-width: 1300px;
+            height: 48px; /* Thinner, sleeker height */
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 24px;
+            padding: 0 20px;
             box-sizing: border-box;
-            /* The specific drop shadow from image_ed5882.png */
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            border-radius: 2px; /* Very slight rounding seen in design */
+            /* Top highlight and bottom shadow */
+            border-top: 1px solid #444;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
         }
 
         .logo {
             color: #ffffff;
             font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            /* Sharp Chromatic Aberration */
-            text-shadow: 
-                -1.5px 0 rgba(255, 0, 0, 1), 
-                1.5px 0 rgba(0, 255, 255, 1);
-            user-select: none;
+            font-weight: 800;
+            text-transform: none; /* Sentence case like the first image */
+            letter-spacing: -0.5px;
+            margin-right: 15px;
+            /* Chromatic Aberration */
+            text-shadow: -1.5px 0 #ff0000, 1.5px 0 #00ffff;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #e0e0e0;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+        }
+
+        .nav-item span {
+            margin-left: 10px;
+            color: #666; /* The gray pipe separators */
+            font-weight: 300;
+        }
+
+        /* Responsive: Hide nav on small screens like a real site */
+        @media (max-width: 900px) {
+            nav { display: none; }
+            header { justify-content: space-between; }
+            .hamburger { display: flex !important; }
         }
 
         .hamburger {
-            display: flex;
+            display: none;
             flex-direction: column;
             justify-content: space-between;
-            width: 24px;
-            height: 14px;
+            width: 20px;
+            height: 12px;
             cursor: pointer;
             background: none;
             border: none;
-            padding: 0;
         }
 
         .hamburger span {
@@ -64,15 +91,25 @@
             width: 100%;
             height: 2px;
             background-color: #ffffff;
-            border-radius: 1px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">TrueRetro</div>
+        <div class="logo">True Retro</div>
         
+        <nav>
+            <div class="nav-item">| Downloads <span>|</span></div>
+            <div class="nav-item">The Mod Pool <span>|</span></div>
+            <div class="nav-item">Nintendo Archives <span>|</span></div>
+            <div class="nav-item">TrueRetroOS <span>|</span></div>
+            <div class="nav-item">TrueRetro3DS <span>|</span></div>
+            <div class="nav-item">The NintenProject <span>|</span></div>
+            <div class="nav-item">Retro Prices <span>|</span></div>
+            <div class="nav-item">Repairs <span>|</span></div>
+        </nav>
+
         <button class="hamburger">
             <span></span>
             <span></span>
