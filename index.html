@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueRetro Header Test</title>
+    <title>True Retro Glossy Test</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffffff; /* White test background */
+            background-color: #ffffff;
             font-family: 'Google Sans', sans-serif;
             display: flex;
             justify-content: center;
@@ -20,70 +20,85 @@
         }
 
         header {
-            /* The glossy gradient from your first screenshot */
-            background: linear-gradient(180deg, #2a2a2a 0%, #111111 50%, #000000 100%);
+            position: relative;
+            /* High-gloss base gradient */
+            background: linear-gradient(180deg, #333333 0%, #1a1a1a 49%, #000000 50%, #000000 100%);
             width: 95%;
-            max-width: 1300px;
-            height: 48px; /* Thinner, sleeker height */
+            max-width: 1200px;
+            height: 50px;
             display: flex;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 24px;
             box-sizing: border-box;
-            /* Top highlight and bottom shadow */
-            border-top: 1px solid #444;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            
+            /* Physical edges */
+            border-top: 1.5px solid #555555; /* Sharp top reflection edge */
+            border-bottom: 1px solid #000000;
             border-radius: 4px;
+            
+            /* Outer depth */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+
+        /* The "Glass" Reflection Overlay */
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            pointer-events: none;
         }
 
         .logo {
             color: #ffffff;
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-transform: none; /* Sentence case like the first image */
+            font-size: 1.6rem;
+            font-weight: 700;
             letter-spacing: -0.5px;
-            margin-right: 15px;
-            /* Chromatic Aberration */
-            text-shadow: -1.5px 0 #ff0000, 1.5px 0 #00ffff;
+            margin-right: 20px;
+            z-index: 1; /* Keep above gloss */
             white-space: nowrap;
         }
 
         nav {
             display: flex;
             align-items: center;
-            font-size: 0.85rem;
-            color: #e0e0e0;
+            font-size: 0.82rem;
+            color: #ffffff;
             white-space: nowrap;
             overflow: hidden;
+            z-index: 1;
         }
 
         .nav-item {
             display: flex;
             align-items: center;
-            padding: 0 8px;
+            padding: 0 4px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
         }
 
-        .nav-item span {
-            margin-left: 10px;
-            color: #666; /* The gray pipe separators */
-            font-weight: 300;
-        }
-
-        /* Responsive: Hide nav on small screens like a real site */
-        @media (max-width: 900px) {
-            nav { display: none; }
-            header { justify-content: space-between; }
-            .hamburger { display: flex !important; }
+        .sep {
+            margin: 0 10px;
+            color: #444444; /* Darker separators to pop against the gloss */
+            font-weight: 400;
         }
 
         .hamburger {
-            display: none;
+            margin-left: auto;
+            display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            width: 20px;
-            height: 12px;
+            justify-content: center;
+            gap: 4px;
+            width: 22px;
+            height: 22px;
             cursor: pointer;
             background: none;
             border: none;
+            z-index: 1;
         }
 
         .hamburger span {
@@ -91,6 +106,10 @@
             width: 100%;
             height: 2px;
             background-color: #ffffff;
+        }
+
+        @media (max-width: 1100px) {
+            nav { display: none; }
         }
     </style>
 </head>
@@ -100,14 +119,15 @@
         <div class="logo">True Retro</div>
         
         <nav>
-            <div class="nav-item">| Downloads <span>|</span></div>
-            <div class="nav-item">The Mod Pool <span>|</span></div>
-            <div class="nav-item">Nintendo Archives <span>|</span></div>
-            <div class="nav-item">TrueRetroOS <span>|</span></div>
-            <div class="nav-item">TrueRetro3DS <span>|</span></div>
-            <div class="nav-item">The NintenProject <span>|</span></div>
-            <div class="nav-item">Retro Prices <span>|</span></div>
-            <div class="nav-item">Repairs <span>|</span></div>
+            <span class="sep">|</span>
+            <div class="nav-item">Downloads</div><span class="sep">|</span>
+            <div class="nav-item">The Mod Pool</div><span class="sep">|</span>
+            <div class="nav-item">Nintendo Archives</div><span class="sep">|</span>
+            <div class="nav-item">TrueRetroOS</div><span class="sep">|</span>
+            <div class="nav-item">TrueRetro3DS</div><span class="sep">|</span>
+            <div class="nav-item">The NintenProject</div><span class="sep">|</span>
+            <div class="nav-item">Retro Prices</div><span class="sep">|</span>
+            <div class="nav-item">Repairs</div><span class="sep">|</span>
         </nav>
 
         <button class="hamburger">
