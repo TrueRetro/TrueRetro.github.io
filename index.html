@@ -12,37 +12,32 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffffff; /* White background */
+            background-color: #ffffff;
             font-family: 'Google Sans', sans-serif;
         }
 
         header {
             position: relative;
-            /* High-gloss base gradient with "horizon" reflection */
+            /* High-gloss horizon reflection */
             background: linear-gradient(180deg, #333333 0%, #1a1a1a 49%, #000000 50%, #000000 100%);
             width: 100%;
             height: 50px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 0 24px;
             box-sizing: border-box;
-            
-            /* Physical edges */
-            border-top: 1px solid #555555;
+            border-top: 1.5px solid #555555;
             border-bottom: 1px solid #000000;
-            
-            /* Deep shadow onto the white page */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             z-index: 1000;
         }
 
-        /* The Glass Shine Overlay (Top half) */
+        /* Glass Shine Overlay */
         header::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 50%;
             background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
             pointer-events: none;
@@ -53,9 +48,7 @@
             font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            margin-right: 20px;
             z-index: 1;
-            white-space: nowrap;
             user-select: none;
         }
 
@@ -64,37 +57,75 @@
             align-items: center;
             font-size: 0.82rem;
             color: #ffffff;
-            white-space: nowrap;
-            overflow-x: auto; /* Allow scrolling on mobile if too long */
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            margin-left: 20px;
             z-index: 1;
         }
-        
-        nav::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome/Safari */
 
-        .nav-item {
+        .nav-item { padding: 0 4px; cursor: pointer; transition: color 0.2s; }
+        .nav-item:hover { color: #bbbbbb; }
+        .sep { margin: 0 10px; color: #444444; user-select: none; }
+
+        /* Mode Toggle Section */
+        .mode-toggle {
             display: flex;
             align-items: center;
-            padding: 0 4px;
-            font-weight: 400;
-            letter-spacing: 0.1px;
+            gap: 14px;
+            z-index: 1;
+            margin-left: auto;
+        }
+
+        .toggle-icon {
+            fill: #444444; /* Dimmed state */
+            transition: all 0.3s ease;
+        }
+
+        .icon-snes { width: 32px; height: 16px; }
+        .icon-switch2 { width: 28px; height: 14px; }
+
+        /* The Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 38px;
+            height: 18px;
+        }
+
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
             cursor: pointer;
-            transition: color 0.2s;
-        }
-        
-        .nav-item:hover { color: #bbbbbb; }
-
-        .sep {
-            margin: 0 10px;
-            color: #444444; /* Dark pipe separators */
-            font-weight: 400;
-            user-select: none;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #111111;
+            border: 1px solid #333;
+            transition: .4s;
+            border-radius: 20px;
         }
 
-        main {
-            padding: 40px 20px;
-            /* Placeholder for content */
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 12px;
+            width: 12px;
+            left: 2px;
+            bottom: 2px;
+            background: linear-gradient(180deg, #777 0%, #333 100%);
+            border-top: 1px solid #999;
+            transition: .4s;
+            border-radius: 50%;
         }
+
+        input:checked + .slider { background-color: #0a0f1a; border-color: #444; }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+            background: linear-gradient(180deg, #ffffff 0%, #bbbbbb 100%);
+        }
+
+        /* Icon Highlight States */
+        input:not(:checked) ~ .icon-snes { fill: #ffffff; filter: drop-shadow(0 0 5px rgba(255,255,255,0.4)); }
+        input:checked ~ .icon-switch2 { fill: #ffffff; filter: drop-shadow(0 0 5px rgba(255,255,255,0.4)); }
+
     </style>
 </head>
 <body>
@@ -108,15 +139,33 @@
             <div class="nav-item">The Mod Pool</div><span class="sep">|</span>
             <div class="nav-item">Nintendo Archives</div><span class="sep">|</span>
             <div class="nav-item">TrueRetroOS</div><span class="sep">|</span>
-            <div class="nav-item">TrueRetro3DS</div><span class="sep">|</span>
-            <div class="nav-item">The NintenProject</div><span class="sep">|</span>
-            <div class="nav-item">Retro Prices</div><span class="sep">|</span>
-            <div class="nav-item">Repairs</div><span class="sep">|</span>
+            <div class="nav-item">TrueRetro3DS</div>
         </nav>
-    </header>
 
-    <main>
-        </main>
+        <div class="mode-toggle">
+            <svg class="toggle-icon icon-snes" viewBox="0 0 32 16">
+                <rect x="2" y="2" width="28" height="12" rx="6" />
+                <circle cx="22" cy="6" r="1.5" opacity="0.5" />
+                <circle cx="25" cy="8" r="1.5" opacity="0.5" />
+                <circle cx="22" cy="10" r="1.5" opacity="0.5" />
+                <circle cx="19" cy="8" r="1.5" opacity="0.5" />
+                <rect x="7" y="7" width="4" height="2" rx="0.5" opacity="0.5" />
+                <rect x="8" y="6" width="2" height="4" rx="0.5" opacity="0.5" />
+            </svg>
+
+            <label class="switch">
+                <input type="checkbox" id="mode-switch">
+                <span class="slider"></span>
+            </label>
+
+            <svg class="toggle-icon icon-switch2" viewBox="0 0 28 14">
+                <rect x="1" y="1" width="26" height="12" rx="4" />
+                <circle cx="7" cy="7" r="3" opacity="0.5" /> <circle cx="20" cy="5" r="1" opacity="0.5" /> <circle cx="22" cy="7" r="1" opacity="0.5" />
+                <circle cx="20" cy="9" r="1" opacity="0.5" />
+                <circle cx="18" cy="7" r="1" opacity="0.5" />
+            </svg>
+        </div>
+    </header>
 
 </body>
 </html>
