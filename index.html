@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>True Retro Glossy Test</title>
+    <title>True Retro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
@@ -12,19 +12,15 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
+            background-color: #ffffff; /* White background */
             font-family: 'Google Sans', sans-serif;
-            display: flex;
-            justify-content: center;
-            padding-top: 100px;
         }
 
         header {
             position: relative;
-            /* High-gloss base gradient */
+            /* High-gloss base gradient with "horizon" reflection */
             background: linear-gradient(180deg, #333333 0%, #1a1a1a 49%, #000000 50%, #000000 100%);
-            width: 95%;
-            max-width: 1200px;
+            width: 100%;
             height: 50px;
             display: flex;
             align-items: center;
@@ -32,16 +28,15 @@
             box-sizing: border-box;
             
             /* Physical edges */
-            border-top: 1.5px solid #555555; /* Sharp top reflection edge */
+            border-top: 1px solid #555555;
             border-bottom: 1px solid #000000;
-            border-radius: 4px;
             
-            /* Outer depth */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-            overflow: hidden;
+            /* Deep shadow onto the white page */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
         }
 
-        /* The "Glass" Reflection Overlay */
+        /* The Glass Shine Overlay (Top half) */
         header::before {
             content: "";
             position: absolute;
@@ -49,7 +44,7 @@
             left: 0;
             right: 0;
             height: 50%;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
             pointer-events: none;
         }
 
@@ -59,8 +54,9 @@
             font-weight: 700;
             letter-spacing: -0.5px;
             margin-right: 20px;
-            z-index: 1; /* Keep above gloss */
+            z-index: 1;
             white-space: nowrap;
+            user-select: none;
         }
 
         nav {
@@ -69,47 +65,35 @@
             font-size: 0.82rem;
             color: #ffffff;
             white-space: nowrap;
-            overflow: hidden;
+            overflow-x: auto; /* Allow scrolling on mobile if too long */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
             z-index: 1;
         }
+        
+        nav::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome/Safari */
 
         .nav-item {
             display: flex;
             align-items: center;
             padding: 0 4px;
             font-weight: 400;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.1px;
+            cursor: pointer;
+            transition: color 0.2s;
         }
+        
+        .nav-item:hover { color: #bbbbbb; }
 
         .sep {
             margin: 0 10px;
-            color: #444444; /* Darker separators to pop against the gloss */
+            color: #444444; /* Dark pipe separators */
             font-weight: 400;
+            user-select: none;
         }
 
-        .hamburger {
-            margin-left: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 4px;
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            z-index: 1;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: #ffffff;
-        }
-
-        @media (max-width: 1100px) {
-            nav { display: none; }
+        main {
+            padding: 40px 20px;
+            /* Placeholder for content */
         }
     </style>
 </head>
@@ -129,13 +113,10 @@
             <div class="nav-item">Retro Prices</div><span class="sep">|</span>
             <div class="nav-item">Repairs</div><span class="sep">|</span>
         </nav>
-
-        <button class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </header>
+
+    <main>
+        </main>
 
 </body>
 </html>
