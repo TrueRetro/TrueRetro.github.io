@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 
     <style>
-        /* Apply Google Sans to EVERYTHING */
+        /* Global Styles */
         * {
             font-family: "Google Sans", sans-serif;
             box-sizing: border-box;
@@ -29,98 +29,120 @@
         /* Frosted Glass Header */
         header {
             width: 100%;
-            height: 70px;
+            height: 90px;
             position: fixed;
             top: 0;
             z-index: 100;
-            /* Frosted glass effect */
-            backdrop-filter: blur(15px) saturate(160%);
-            -webkit-backdrop-filter: blur(15px) saturate(160%);
-            background-color: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.03); 
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Center the Header Title */
+        /* Bigger and Bolder Title */
         .header-title {
-            font-size: 1.4rem;
-            font-weight: 500;
-            letter-spacing: -0.5px;
+            font-size: 2.2rem;
+            font-weight: 800; /* Extra Bold */
+            letter-spacing: -1px;
+            text-transform: tight;
         }
 
-        /* Stemless Arrow on the Left */
+        /* Custom Stemless Arrow (SVG for precision) */
         .header-icon {
             position: absolute;
-            left: 30px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            left: 40px;
+            width: 24px;
+            height: 24px;
             cursor: pointer;
-            user-select: none;
-            /* Using a chevron style for "arrow without stem" */
-            transform: scaleX(1.5); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Main Content Container */
+        .header-icon svg {
+            width: 100%;
+            height: auto;
+            fill: none;
+            stroke: white;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Main Content Grid */
         main {
-            margin-top: 110px;
-            width: 90%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
+            margin-top: 140px;
+            width: 95%;
+            max-width: 1200px;
+            display: grid;
+            /* 3 Cards per row */
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             padding-bottom: 50px;
+        }
+
+        /* Responsive adjustment for mobile */
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Base Card Styling */
         .card {
             background-color: #0A0A0A;
-            border-radius: 24px; /* Rounded corners */
-            padding: 25px;
+            border-radius: 28px;
+            padding: 30px;
             border: 1px solid #1A1A1A;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: inherit;
-        }
-
-        /* Top Card (Pretendo) Styling */
-        .pretendo-card {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: space-between;
+            min-height: 220px;
         }
 
+        /* Pretendo Card Specifics */
         .pretendo-card:hover {
-            background-color: #111111;
+            background-color: #121212;
             border-color: #333333;
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
         .pretendo-card img {
-            max-height: 50px;
+            max-height: 40px;
             width: auto;
-            margin-left: 20px;
         }
 
         /* Placeholder Cards */
         .placeholder-card {
-            opacity: 0.4;
-            border-style: solid;
+            opacity: 0.3;
+            border-style: dashed;
         }
 
         /* Typography */
         h2 {
             margin: 0;
-            font-size: 1.25rem;
-            font-weight: 500;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
         p {
-            margin: 8px 0 0 0;
+            margin: 12px 0 0 0;
             color: #888888;
-            font-size: 0.95rem;
-            line-height: 1.4;
+            font-size: 1rem;
+            line-height: 1.5;
         }
 
     </style>
@@ -128,37 +150,42 @@
 <body>
 
     <header>
-        <div class="header-icon">∨</div> <div class="header-title">True Retro</div>
+        <div class="header-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M4 9l8 8 8-8" />
+            </svg>
+        </div>
+        <div class="header-title">True Retro</div>
     </header>
 
     <main>
         
         <a href="/monitor/pretendo/index.html" class="card pretendo-card">
-            <div>
+            <div class="card-header">
                 <h2>Pretendo Network</h2>
-                <p>Real-time status for the Wii U and 3DS revival service.</p>
+                <img src="pretendo.png" alt="Pretendo Logo">
             </div>
-            <img src="pretendo.png" alt="Pretendo Logo">
+            <p>Live status and player metrics for the Wii U and 3DS revival servers.</p>
         </a>
 
         <div class="card placeholder-card">
-            <h2>Future Monitor</h2>
-            <p>Monitors for other retro networks will appear here.</p>
+            <h2>Future Hub</h2>
+            <p>Expansion slot for upcoming retro network monitors.</p>
         </div>
 
         <div class="card placeholder-card">
-            <h2>Future Monitor</h2>
-            <p>Reserved for upcoming preservation trackers.</p>
+            <h2>Future Hub</h2>
+            <p>Expansion slot for upcoming retro network monitors.</p>
         </div>
 
         <div class="card placeholder-card">
-            <h2>Future Monitor</h2>
-            <p>Pending network integration.</p>
+            <h2>Future Hub</h2>
+            <p>Expansion slot for upcoming retro network monitors.</p>
         </div>
 
         <div class="card placeholder-card">
-            <h2>Future Monitor</h2>
-            <p>Monitors for other retro networks will appear here.</p>
+            <h2>Future Hub</h2>
+            <p>Expansion slot for upcoming retro network monitors.</p>
         </div>
 
     </main>
