@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Retro Monitor Hub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 
+    <style>
+        /* Apply Google Sans to EVERYTHING */
+        * {
+            font-family: "Google Sans", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Frosted Glass Header */
+        header {
+            width: 100%;
+            height: 70px;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            /* Frosted glass effect */
+            backdrop-filter: blur(15px) saturate(160%);
+            -webkit-backdrop-filter: blur(15px) saturate(160%);
+            background-color: rgba(255, 255, 255, 0.05); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Center the Header Title */
+        .header-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+        }
+
+        /* Stemless Arrow on the Left */
+        .header-icon {
+            position: absolute;
+            left: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            user-select: none;
+            /* Using a chevron style for "arrow without stem" */
+            transform: scaleX(1.5); 
+        }
+
+        /* Main Content Container */
+        main {
+            margin-top: 110px;
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 50px;
+        }
+
+        /* Base Card Styling */
+        .card {
+            background-color: #0A0A0A;
+            border-radius: 24px; /* Rounded corners */
+            padding: 25px;
+            border: 1px solid #1A1A1A;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Top Card (Pretendo) Styling */
+        .pretendo-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pretendo-card:hover {
+            background-color: #111111;
+            border-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        .pretendo-card img {
+            max-height: 50px;
+            width: auto;
+            margin-left: 20px;
+        }
+
+        /* Placeholder Cards */
+        .placeholder-card {
+            opacity: 0.4;
+            border-style: solid;
+        }
+
+        /* Typography */
+        h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        p {
+            margin: 8px 0 0 0;
+            color: #888888;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-icon">∨</div> <div class="header-title">True Retro</div>
+    </header>
+
+    <main>
+        
+        <a href="/monitor/pretendo/index.html" class="card pretendo-card">
+            <div>
+                <h2>Pretendo Network</h2>
+                <p>Real-time status for the Wii U and 3DS revival service.</p>
+            </div>
+            <img src="pretendo.png" alt="Pretendo Logo">
+        </a>
+
+        <div class="card placeholder-card">
+            <h2>Future Monitor</h2>
+            <p>Monitors for other retro networks will appear here.</p>
+        </div>
+
+        <div class="card placeholder-card">
+            <h2>Future Monitor</h2>
+            <p>Reserved for upcoming preservation trackers.</p>
+        </div>
+
+        <div class="card placeholder-card">
+            <h2>Future Monitor</h2>
+            <p>Pending network integration.</p>
+        </div>
+
+        <div class="card placeholder-card">
+            <h2>Future Monitor</h2>
+            <p>Monitors for other retro networks will appear here.</p>
+        </div>
+
+    </main>
+
+</body>
+</html>
