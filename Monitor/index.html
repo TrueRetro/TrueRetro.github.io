@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 
     <style>
-        /* Global Styles */
         * {
             font-family: "Google Sans", sans-serif;
             box-sizing: border-box;
@@ -29,12 +28,12 @@
         /* Frosted Glass Header */
         header {
             width: 100%;
-            height: 90px;
+            height: 100px;
             position: fixed;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
             background-color: rgba(255, 255, 255, 0.03); 
             display: flex;
             align-items: center;
@@ -42,109 +41,108 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Bigger and Bolder Title */
+        /* Maximum Boldness for Title */
         .header-title {
-            font-size: 2.2rem;
-            font-weight: 800; /* Extra Bold */
-            letter-spacing: -1px;
-            text-transform: tight;
+            font-size: 2.8rem;
+            font-weight: 900; 
+            letter-spacing: -1.5px;
         }
 
-        /* Custom Stemless Arrow (SVG for precision) */
+        /* Clean Stemless Chevron */
         .header-icon {
             position: absolute;
-            left: 40px;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
+            left: 50px;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
-            justify-content: center;
         }
 
         .header-icon svg {
             width: 100%;
-            height: auto;
             fill: none;
             stroke: white;
-            stroke-width: 2.5;
+            stroke-width: 3;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-        /* Main Content Grid */
+        /* Layout Container */
         main {
-            margin-top: 140px;
-            width: 95%;
-            max-width: 1200px;
-            display: grid;
-            /* 3 Cards per row */
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding-bottom: 50px;
+            margin-top: 150px;
+            width: 90%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding-bottom: 60px;
         }
 
-        /* Responsive adjustment for mobile */
-        @media (max-width: 900px) {
-            main {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Base Card Styling */
-        .card {
+        /* The Large "Main" Card Style (Pretendo) */
+        .main-card {
             background-color: #0A0A0A;
-            border-radius: 28px;
-            padding: 30px;
+            border-radius: 35px;
+            padding: 45px;
             border: 1px solid #1A1A1A;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: inherit;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            min-height: 220px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Pretendo Card Specifics */
-        .pretendo-card:hover {
-            background-color: #121212;
+        .main-card:hover {
+            background-color: #111111;
             border-color: #333333;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(1.01);
         }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        .main-card-content h2 {
+            font-size: 2.2rem;
+            margin: 0;
+            font-weight: 700;
         }
 
-        .pretendo-card img {
-            max-height: 40px;
+        .main-card-content p {
+            font-size: 1.2rem;
+            color: #888888;
+            margin-top: 10px;
+        }
+
+        .main-card img {
+            height: 100px;
             width: auto;
         }
 
-        /* Placeholder Cards */
-        .placeholder-card {
-            opacity: 0.3;
-            border-style: dashed;
+        /* Grid for the 3 smaller cards */
+        .grid-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
-        /* Typography */
-        h2 {
+        /* Small Card Styling */
+        .small-card {
+            background-color: #0A0A0A;
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid #1A1A1A;
+            opacity: 0.3; /* Keeping placeholders faded */
+            min-height: 200px;
+        }
+
+        .small-card h3 {
             margin: 0;
             font-size: 1.4rem;
             font-weight: 600;
         }
 
-        p {
-            margin: 12px 0 0 0;
-            color: #888888;
-            font-size: 1rem;
-            line-height: 1.5;
+        @media (max-width: 900px) {
+            .grid-row { grid-template-columns: 1fr; }
+            .main-card { flex-direction: column; text-align: center; }
+            .main-card img { margin-top: 20px; }
         }
-
     </style>
 </head>
 <body>
@@ -152,7 +150,7 @@
     <header>
         <div class="header-icon">
             <svg viewBox="0 0 24 24">
-                <path d="M4 9l8 8 8-8" />
+                <path d="M6 9l6 6 6-6" />
             </svg>
         </div>
         <div class="header-title">True Retro</div>
@@ -160,32 +158,27 @@
 
     <main>
         
-        <a href="/monitor/pretendo/index.html" class="card pretendo-card">
-            <div class="card-header">
+        <a href="https://trueretro.github.io/Monitor/Pretendo" class="main-card">
+            <div class="main-card-content">
                 <h2>Pretendo Network</h2>
-                <img src="pretendo.png" alt="Pretendo Logo">
+                <p>Live metrics for the Wii U and 3DS revival servers.</p>
             </div>
-            <p>Live status and player metrics for the Wii U and 3DS revival servers.</p>
+            <img src="pretendo.png" alt="Pretendo Logo">
         </a>
 
-        <div class="card placeholder-card">
-            <h2>Future Hub</h2>
-            <p>Expansion slot for upcoming retro network monitors.</p>
-        </div>
-
-        <div class="card placeholder-card">
-            <h2>Future Hub</h2>
-            <p>Expansion slot for upcoming retro network monitors.</p>
-        </div>
-
-        <div class="card placeholder-card">
-            <h2>Future Hub</h2>
-            <p>Expansion slot for upcoming retro network monitors.</p>
-        </div>
-
-        <div class="card placeholder-card">
-            <h2>Future Hub</h2>
-            <p>Expansion slot for upcoming retro network monitors.</p>
+        <div class="grid-row">
+            <div class="small-card">
+                <h3>Future Hub</h3>
+                <p>Monitor expansion slot.</p>
+            </div>
+            <div class="small-card">
+                <h3>Future Hub</h3>
+                <p>Monitor expansion slot.</p>
+            </div>
+            <div class="small-card">
+                <h3>Future Hub</h3>
+                <p>Monitor expansion slot.</p>
+            </div>
         </div>
 
     </main>
